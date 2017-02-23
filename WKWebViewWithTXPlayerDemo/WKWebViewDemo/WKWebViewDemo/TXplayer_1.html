@@ -1,0 +1,34 @@
+ <script language="javascript" src="http://qzs.qq.com/tencentvideo_v1/js/tvp/tvp.player.js" charset="utf-8"></script>
+    <div id="mod_player"><!-- 这个div是播放器准备输出的位置 --></div>
+    <script language="javascript">
+       var video = new tvp.VideoInfo();
+       //向视频对象传入视频vid
+       video.setVid("9KZiLnxtCMv");
+     
+       var player = new tvp.Player(600, 450);
+       //设置播放器初始化时加载的视频
+       player.setCurVideo(video);
+       //输出播放器    
+       player.write("mod_player");
+    </script>
+ 
+    <div id="mod_player"><!-- 这个div是播放器准备输出的位置 --></div>
+    <!-- 引入腾讯视频播放器组件 -->
+    <script language="javascript" src="http://qzs.qq.com/tencentvideo_v1/js/tvp/tvp.player.js" charset="utf-8"></script>
+    <script language="javascript">
+        var video = new tvp.VideoInfo();
+        //向视频对象传入直播频道id
+        //video.setChannelId("18091377");
+		
+		video.setVid("8dVMkHfhuZw");
+        var player = new tvp.Player(500, 334);
+        //设置播放器初始化时加载的视频
+        player.setCurVideo(video);
+        //设置播放器为直播状态，1表示直播，2表示点播，默认为2
+        player.addParam("type","2");
+        //输出播放器    
+        player.write("mod_player");
+		player.addParam("autoplay","1");//是否自动播放，1为自动播放，0为不自动播放
+//		player.autoplay = true
+		//player.plugins = { AppBanner = true }
+    </script>

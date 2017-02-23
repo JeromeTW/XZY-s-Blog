@@ -1,0 +1,35 @@
+<script src="http://imgcache.qq.com/tencentvideo_v1/tvp/js/tvp.player_v2.js" type="text/javascript" ></script>
+ 
+<div id="mod_player"></div>
+<script language="javascript">
+	var vList = ["r0377v69j6a", "k03700uq9js", "n0377ca06hx", "m0325p4yvfu"]; // 初始化播放列表
+	var vLen = vList.length; // 播放列表的长度
+	var curr = 0; // 当前播放的视频
+	
+	var video = new tvp.VideoInfo();
+	video.setVid(vList[curr]);
+ 	var player =new tvp.Player();
+  	player.create({
+				  width:480, height:360, video:video, modId:"mod_player", autoplay:true, onallended:function(){
+				  curr = curr + 1;
+				  if (curr >= vLen) {	// 播放完最后一首则从第一首开始播放
+				  	curr = 0;
+				  }
+				  video.setVid(vList[curr]);
+				  player.play(video);
+				  }
+	});
+
+	function pauseVideo(){
+		player.pause();  //暂停
+	}
+	function playVideo(){
+		player.play();
+	}
+	function getCurrentTime() {	// time是number
+		var current = player.getPlaytime();
+		window.webkit.messageHandlers.AppModel.postMessage({body: 'current time is ' + current.toString() });
+	}
+	
+
+</script>
